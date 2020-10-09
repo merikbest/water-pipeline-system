@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Upload CSV File Example</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-10 mx-auto">
+            <h1>Result</h1>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">ROUTE EXISTS</th>
+                    <th scope="col">MIN LENGTH</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="result : ${results}">
+                    <td th:text="${result.getRouteExists()}"></td>
+                    <td th:text="${result.getMinLength()}"></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <form method="GET" th:action="@{/result}" enctype="multipart/form-data">
+                <button type="submit" class="btn btn-primary">Download file</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
